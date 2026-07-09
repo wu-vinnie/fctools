@@ -7,43 +7,133 @@
 
 <!-- badges: end -->
 
-The goal of fctools is to …
+## Overview
+
+**fctools** is an R package that provides reusable tools for
+institutional research and reporting at Fullerton College. It includes
+project templates, branding assets, visualization themes, and helper
+functions that support consistent, accessible, and reproducible
+reporting workflows.
+
+The package is designed to reduce repetitive setup by providing
+standardized Quarto templates, plotting themes, color palettes, and
+utilities for common reporting tasks used by the Office of Institutional
+Effectiveness.
+
+## Features
+
+- Create new Quarto report projects
+- Create new Quarto presentation projects
+- Fullerton College HTML and CSS templates
+- Fullerton College ggplot2 themes and color palettes
+- Plotly theme helpers
+- Font and flextable utilities
+- Helper functions for institutional research workflows
+- Utilities for common Fullerton College reporting tasks
 
 ## Installation
 
-You can install the development version of fctools from
-[GitHub](https://github.com/) with:
+Install the development version from GitHub.
 
 ``` r
 # install.packages("pak")
-pak::pak("wu-vinnie/fcbrand")
+pak::pak("wu-vinnie/fctools")
 ```
 
-## Example
+Or install using **remotes**.
 
-This is a basic example which shows you how to solve a common problem:
+``` r
+# install.packages("remotes")
+remotes::install_github("wu-vinnie/fctools")
+```
+
+## Getting Started
+
+Load the package.
 
 ``` r
 library(fctools)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Create a new HTML report project in the current working directory.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+use_report()
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+Create a report project in a new folder.
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+use_report(path = "BasicNeeds2027")
+```
+
+Create a PDF report.
+
+``` r
+use_report(format = "pdf")
+```
+
+Create a Reveal.js presentation.
+
+``` r
+use_presentation()
+```
+
+## Visualization
+
+Apply the Fullerton College ggplot2 theme.
+
+``` r
+library(ggplot2)
+library(fctools)
+
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  theme_fc()
+```
+
+Use the Fullerton College color scales.
+
+``` r
+ggplot(mtcars, aes(factor(cyl), fill = factor(cyl))) +
+  geom_bar() +
+  scale_fill_fc()
+```
+
+Apply the Plotly theme.
+
+``` r
+fig <- plotly::plot_ly(
+  x = 1:10,
+  y = 1:10,
+  type = "scatter",
+  mode = "lines"
+)
+
+fc_plotly_theme(fig)
+```
+
+## Development
+
+After modifying package code or documentation:
+
+``` r
+devtools::document()
+devtools::load_all()
+```
+
+To regenerate this README:
+
+``` r
+devtools::build_readme()
+```
+
+Before publishing changes:
+
+``` r
+devtools::check()
+```
+
+## License
+
+Licensed under the MIT License.
