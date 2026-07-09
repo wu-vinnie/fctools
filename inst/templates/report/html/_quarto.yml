@@ -1,10 +1,10 @@
 project:
-  output-dir: ../html
+  output-dir: output
 
 format:
   html:
-    css: html/template/fullerton.css
-    template: html/template/fullerton.html
+    css: template/fullerton.css
+    template: template/fullerton.html
     toc: true
     toc-depth: 3
     toc-location: left
@@ -13,3 +13,4 @@ format:
     embed-resources: true
     theme: none
     title-block: none
+    

@@ -1,6 +1,6 @@
 project:
   type: default
-  output-dir: ../html
+  output-dir: output
 
 execute:
   echo: false
@@ -17,3 +17,4 @@ format:
     theme: none
     embed-resources: true
     toc: false
+    

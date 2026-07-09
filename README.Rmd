@@ -34,6 +34,7 @@ The package is designed to reduce repetitive setup by providing standardized Qua
 * Fullerton College ggplot2 themes and color palettes
 * Plotly theme helpers
 * Font and flextable utilities
+* Derive ethnicity indicators from CCCCO MIS ethnicity codes
 * Helper functions for institutional research workflows
 * Utilities for common Fullerton College reporting tasks
 
@@ -118,6 +119,42 @@ fig <- plotly::plot_ly(
 
 fc_plotly_theme(fig)
 ```
+
+## Demographics
+
+Derive all ethnicity indicators at once from a CCCCO MIS ethnicity
+code column.
+
+```r
+df <- data.frame(
+  MIS_ETHNICITY_CODE = c(
+    "YNNNNNNNNNNNNNNNNNNNN",
+    "NNNNNNNNNNNNNNNNNNNNN",
+    NA_character_
+  )
+)
+
+# Default column name is "MIS_ETHNICITY_CODE"
+df <- get_ethnicity(df)
+```
+
+Specify a different MIS ethnicity column name.
+
+```r
+df <- get_ethnicity(df, mis_col = "MY_CODE_COL")
+```
+
+Derive a single ethnicity indicator instead of all of them.
+
+```r
+df$ethn_black <- get_black(df$MIS_ETHNICITY_CODE)
+```
+
+Each indicator is coded `1` (belongs to the ethnicity), `0` (does
+not), or `NA` (missing MIS ethnicity code). Available single-ethnicity
+helpers: `get_black()`, `get_native()`, `get_asian()`,
+`get_filipino()`, `get_hispanic()`, `get_pi()`, `get_white()`,
+`get_unknown()`.
 
 ## Development
 
