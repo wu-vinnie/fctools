@@ -1,0 +1,14 @@
+project:
+  output-dir: ../pdf
+
+format:
+  pdf:
+    documentclass: report
+    pdf-engine: xelatex
+    include-in-header: pdf/template/preamble.tex
+    toc: false
+    number-sections: false
+    geometry:
+      - margin=1in
+    colorlinks: true
+    linkcolor: fcblue

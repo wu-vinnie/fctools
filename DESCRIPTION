@@ -1,0 +1,30 @@
+Package: fctools
+Title: Fullerton College Institutional Research Tools
+Version: 0.0.0.9000
+Authors@R:
+    person(
+      given = "Vinnie",
+      family = "Wu",
+      email = "vwu@fullcoll.edu",
+      role = c("aut", "cre")
+    )
+Description: Provides reusable tools for institutional research and
+    reporting at Fullerton College, including Quarto project templates,
+    branding assets, visualization themes, helper functions, and
+    utilities for common data preparation and reporting workflows. The
+    package promotes consistent, accessible, and reproducible reports,
+    presentations, dashboards, and analyses across recurring
+    institutional research projects.
+Imports:
+    extrafont,
+    flextable,
+    fs,
+    ggplot2,
+    plotly
+License: MIT + file LICENSE
+URL: https://github.com/wu-vinnie/fctools
+BugReports: https://github.com/wu-vinnie/fctools/issues
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0

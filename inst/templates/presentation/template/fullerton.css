@@ -1,0 +1,409 @@
+/* ============================================================
+   Fullerton College (FC) Presentation Stylesheet (reveal.js)
+   Package:      fcbrand
+   Template:     presentation
+   Author:       Vinnie Wu
+   Version:      1.0.0
+   Last updated: 2026-07-09
+
+   This stylesheet is intended ONLY for the Presentation template.
+   Do not reuse for reports or dashboards — each template owns its
+   own fullerton.css.
+
+   Structure:
+     1. Variables
+     2. Reset / Base
+     3. Slide Layout
+     4. Title Slide
+     4b. Logo
+     5. Headings
+     6. Text & Lists
+     7. Links
+     8. Tables
+     9. Code
+     10. Images & Figures (incl. Plotly)
+     11. Blockquotes
+     12. Section Divider Slides
+     13. Callout Boxes
+     14. Footer, Progress, Slide Number
+     15. Utilities & Quarto Overrides
+
+   Note: no Responsive section — reveal.js handles slide scaling
+   internally via its own scale engine, unlike the report template.
+   ============================================================ */
+
+
+/* ============================================================
+   1. Variables
+   ============================================================ */
+
+:root {
+
+  /* --- Brand colors --- */
+  --fc-blue:   #0F406B;
+  --fc-yellow: #FFD600;
+  --fc-sky:    #375E9E;
+  --fc-creek:  #5DCCD4;
+  --fc-breeze: #BAEEED;
+  --fc-lemon:  #F5F3BF;
+  --fc-rust:   #E6605B;
+  --fc-purple: #1B0D42;
+
+  --fc-gray: #333333;
+
+  --link-color: var(--fc-blue);
+
+  /* --- Backgrounds --- */
+  --bg-light:   #f7f9fc;   /* gray callout box */
+  --bg-stripe:  #f6f6f6;   /* table stripes */
+  --bg-quote:   #f8f9fb;   /* blockquote */
+
+  /* --- Text (secondary) --- */
+  --text-secondary: #666666;  /* author / date */
+  --text-muted:     #888888;  /* footer */
+
+  /* --- Borders --- */
+  --border-light: #d9d9d9;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* --- Typography --- */
+  --font-body: "Century Gothic", Helvetica, Arial, sans-serif;
+
+  --body-size: 26px;
+
+  --title-size:    2.4em;
+  --subtitle-size: 1.15em;
+  --meta-size:     0.8em;
+
+  --h1-size: 1.5em;
+  --h2-size: 1.3em;
+  --h3-size: 1.15em;
+
+  --table-size: 0.75em;
+  --code-size:  0.65em;
+
+  /* --- Spacing --- */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /*  8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.25rem;   /* 20px */
+  --space-xl: 2.5rem;    /* 40px */
+
+  /* --- Shadows (reserved for future components) --- */
+  --shadow-sm: 0 2px 4px rgba(15, 64, 107, 0.15);
+  --shadow-md: 0 4px 10px rgba(15, 64, 107, 0.3);
+
+  /* --- Motion --- */
+  --transition-fast: 0.2s ease;
+}
+
+
+/* ============================================================
+   2. Reset / Base
+   ============================================================ */
+
+.reveal {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  color: var(--fc-gray);
+}
+
+
+/* ============================================================
+   3. Slide Layout
+   ============================================================ */
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  width: 95%;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg) var(--space-lg);
+}
+
+
+/* ============================================================
+   4. Title Slide
+   ============================================================ */
+
+.reveal .quarto-title-block {
+  text-align: center;
+}
+
+.reveal .title {
+  font-family: var(--font-body) !important;
+  font-size: var(--title-size) !important;
+  font-weight: 700 !important;
+  color: var(--fc-blue) !important;
+  margin-bottom: var(--space-sm) !important;
+  text-shadow: none !important;
+}
+
+.reveal .subtitle {
+  font-family: var(--font-body) !important;
+  font-size: var(--subtitle-size) !important;
+  font-weight: 500 !important;
+  color: var(--fc-gray) !important;
+  margin-bottom: var(--space-lg) !important;
+}
+
+.reveal .author,
+.reveal .date {
+  font-family: var(--font-body) !important;
+  font-size: var(--meta-size) !important;
+  color: var(--text-secondary) !important;
+}
+
+
+/* ============================================================
+   4b. Logo
+   ============================================================ */
+
+/* Quarto's `logo:` YAML key injects this element. With `theme: none`
+   set, Quarto's default reveal.js theme (which normally sizes it)
+   is not loaded — so this rule is required, not optional. */
+.reveal .slide-logo {
+  max-height: 40px;
+  max-width: 140px;
+  height: auto;
+  width: auto;
+}
+
+
+/* ============================================================
+   5. Headings
+   ============================================================ */
+
+.reveal h1 {
+  font-family: var(--font-body);
+  font-size: var(--h1-size);
+  font-weight: 700;
+  color: var(--fc-blue);
+  margin-bottom: 0.45em;
+  padding-bottom: 0.18em;
+}
+
+.reveal h2 {
+  font-family: var(--font-body);
+  font-size: var(--h2-size);
+  font-weight: 700;
+  color: var(--fc-blue);
+  border-inline-start: 8px solid var(--fc-blue);
+  padding-inline-start: 0.35em;
+  margin-bottom: 0.45em;
+}
+
+.reveal h3 {
+  font-family: var(--font-body);
+  font-size: var(--h3-size);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--fc-sky);
+}
+
+
+/* ============================================================
+   6. Text & Lists
+   ============================================================ */
+
+.reveal p {
+  line-height: 1.4;
+}
+
+.reveal strong {
+  color: var(--fc-blue);
+}
+
+.reveal ul,
+.reveal ol {
+  margin-block: var(--space-sm);
+  line-height: 1.5;
+}
+
+.reveal li {
+  margin-bottom: var(--space-xs);
+}
+
+
+/* ============================================================
+   7. Links
+   ============================================================ */
+
+.reveal a {
+  color: var(--link-color);
+  transition: color var(--transition-fast);
+}
+
+.reveal a:hover {
+  color: var(--fc-sky);
+}
+
+
+/* ============================================================
+   8. Tables
+   ============================================================ */
+
+.reveal table {
+  font-size: var(--table-size);
+  border-collapse: collapse;
+  margin-inline: auto;
+}
+
+.reveal table th {
+  background: var(--fc-blue);
+  color: white;
+  font-weight: bold;
+  padding: var(--space-sm);
+}
+
+.reveal table td {
+  padding: var(--space-sm);
+  border: 1px solid var(--border-light);
+}
+
+.reveal table tr:nth-child(even) {
+  background: var(--bg-stripe);
+}
+
+
+/* ============================================================
+   9. Code
+   ============================================================ */
+
+.reveal pre {
+  width: 100%;
+  font-size: var(--code-size);
+  border-inline-start: 6px solid var(--fc-blue);
+  border-radius: var(--radius-md);
+}
+
+.reveal code {
+  color: var(--fc-blue);
+}
+
+
+/* ============================================================
+   10. Images & Figures
+   ============================================================ */
+
+.reveal img {
+  border: none;
+  box-shadow: none;
+  max-height: 70vh;
+}
+
+/* Plotly widgets */
+.reveal .html-widget {
+  width: 100% !important;
+  margin-inline: auto;
+}
+
+/* Quarto figure wrapper */
+.reveal .quarto-figure {
+  text-align: center;
+}
+
+
+/* ============================================================
+   11. Blockquotes
+   ============================================================ */
+
+.reveal blockquote {
+  border-inline-start: 6px solid var(--fc-blue);
+  background: var(--bg-quote);
+  color: var(--fc-gray);
+  padding: var(--space-lg);
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   12. Section Divider Slides
+   ============================================================ */
+
+h1.section-slide,
+h2.section-slide {
+  font-size: var(--title-size);
+  text-align: center;
+  color: var(--fc-blue);
+  margin-top: 25%;
+}
+
+
+/* ============================================================
+   13. Callout Boxes
+   ============================================================ */
+
+.blue-box {
+  background: var(--fc-blue);
+  color: white;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+
+.yellow-box {
+  background: var(--fc-yellow);
+  color: black;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+
+.gray-box {
+  background: var(--bg-light);
+  border-inline-start: 6px solid var(--fc-blue);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   14. Footer, Progress, Slide Number
+   ============================================================ */
+
+.reveal .footer {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: var(--space-xl);
+  color: var(--text-muted);
+  font-size: 0.45em;
+}
+
+.reveal .progress {
+  color: var(--fc-blue);
+}
+
+.reveal .slide-number {
+  color: var(--fc-blue);
+  font-size: 0.5em;
+}
+
+
+/* ============================================================
+   15. Utilities & Quarto Overrides
+   ============================================================ */
+
+/* Fix unnecessary code scrollbars */
+.reveal div.sourceCode {
+  overflow: visible !important;
+  max-width: 100%;
+}
+
+.reveal pre.sourceCode {
+  overflow-x: visible !important;
+}
+
+.reveal pre.sourceCode code {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+}
+
+/* Hide auto-generated figure captions — presentations don't use them */
+.reveal .quarto-figure + p.caption,
+.reveal img + p.caption {
+  display: none !important;
+}
+
+/* End of Fullerton College Presentation Stylesheet */

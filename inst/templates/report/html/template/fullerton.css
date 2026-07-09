@@ -1,0 +1,670 @@
+/* ============================================================
+   Fullerton College (FC) Report Stylesheet
+   Package:      fctools
+   Template:     report
+   Author:       Vinnie Wu
+   Version:      1.0.0
+   Last updated: 2026-07-08
+
+   This stylesheet is intended ONLY for the Report template.
+   Do not reuse for presentations or dashboards — each template
+   owns its own fullerton.css.
+
+   Structure:
+     1. Variables
+     2. Reset / Base
+     3. Typography
+     4. Title Block
+     5. Links & Buttons
+     6. Layout (sidebar / TOC / main body)
+     7. Tables
+     8. Code
+     9. Lists, Quotes, HR
+     10. Figures (incl. Plotly lock)
+     11. Utilities
+     12. Footer
+     13. Responsive
+   ============================================================ */
+
+
+/* ============================================================
+   1. Variables
+   ============================================================ */
+
+:root {
+
+  /* --- Brand colors --- */
+  --fc-blue:   #0F406B;
+  --fc-yellow: #FFD600;
+  --fc-sky:    #375E9E;
+  --fc-gray:   #333333;
+
+  --link-color: var(--fc-blue);
+
+  /* --- Backgrounds --- */
+  --bg-body:    #ffffff;
+  --bg-light:   #f5f7fa;   /* code, TOC background */
+  --bg-lighter: #f8f8f8;   /* table stripes, blockquote */
+  --bg-toc-active: #E8F0FA;
+
+  /* --- Borders --- */
+  --border-light: #ddd;
+  --border-color: #ccc;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+
+  /* --- Typography --- */
+  --font-body: "Century Gothic", "Helvetica", sans-serif;
+  --font-code: "Courier New", Consolas, monospace;
+
+  --body-size: 16px;
+  --body-line-height: 1.6;
+
+  --h1-size: 2.8em;
+  --subtitle-size: 2em;
+  --toc-size: 15px;
+
+  /* --- Layout widths --- */
+  --page-width:    1200px;
+  --content-width: 900px;
+  --sidebar-width: 250px;
+
+  /* --- Spacing --- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 2px 4px rgba(15, 64, 107, 0.15);
+  --shadow-md: 0 4px 10px rgba(15, 64, 107, 0.3);
+
+  /* --- Motion --- */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* --- Components --- */
+  --button-padding: var(--space-sm) calc(var(--space-md) + 0.125rem);
+  --button-radius: var(--radius-lg);
+  --toc-padding: var(--space-md) calc(var(--space-md) + 0.25rem);
+  --toc-gap: calc(var(--space-md) - 0.4rem);
+}
+
+
+/* ============================================================
+   2. Reset / Base
+   ============================================================ */
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: #000;
+  background-color: var(--bg-body);
+  margin: 40px;
+}
+
+
+/* ============================================================
+   3. Typography
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-body);
+  color: var(--fc-blue);
+  font-weight: 700;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  border-bottom: 2px solid var(--fc-blue);
+  padding-bottom: 4px;
+}
+
+h2, h3 {
+  border-inline-start: 5px solid var(--fc-blue);
+  padding-inline-start: var(--space-sm);
+}
+
+h3 {
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Subtitle (below report title) */
+#subtitle {
+  font-family: var(--font-body);
+  font-size: var(--subtitle-size);
+  font-weight: 700;
+  color: var(--fc-gray);
+  letter-spacing: 0.5px;
+  margin: 10px 0 32px;
+  border: none !important;
+}
+
+
+/* ============================================================
+   4. Title Block
+   ============================================================ */
+
+#title-block h1,
+#report-title {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+#title-block h1 {
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+#report-title {
+  font-size: var(--h1-size);
+  font-weight: 700;
+  color: var(--fc-blue);
+  text-align: center;
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+#title-block,
+#fc-header-logo {
+  max-width: var(--content-width);
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   5. Links & Buttons
+   ============================================================ */
+
+a, a:visited {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--toc-gap);
+  justify-content: center;
+  margin: 1.2em 0;
+}
+
+/* Base button */
+.btn,
+.navbtn,
+.link-box,
+.link-box2 {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-med);
+}
+
+/* Filled/primary button */
+.navbtn,
+.link-box {
+  background-color: var(--fc-blue);
+  color: white !important;
+  font-weight: normal;
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
+  transition: background-color var(--transition-fast);
+}
+
+.navbtn:hover,
+.link-box:hover {
+  background-color: var(--fc-sky);
+}
+
+/* Outline/secondary button */
+.link-box2 {
+  background-color: transparent;
+  color: var(--fc-blue) !important;
+  border: 2px solid var(--fc-blue);
+  padding: calc(var(--space-md) - 0.125rem) calc(var(--space-md) + 0.25rem);
+  border-radius: var(--radius-xl);
+  margin: var(--space-md);
+}
+
+.link-box2:hover {
+  background-color: var(--fc-blue);
+  color: white !important;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   6. Layout — sidebar / TOC / main body
+   ============================================================ */
+
+#layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+#main-body {
+  flex: 0 1 var(--content-width);
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+/* --- Sidebar (logo + TOC) --- */
+
+#sidebar-column {
+  flex: 0 0 var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 1rem;
+}
+
+.fc-sidebar-logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.fc-sidebar-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* --- Table of contents --- */
+
+#toc {
+  top: 90px;
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  max-height: none;
+  overflow-y: visible;
+  background-color: var(--bg-light);
+  border-inline-start: 5px solid var(--fc-blue);
+  border-radius: var(--radius-lg);
+  padding: var(--toc-padding);
+  font-family: var(--font-body);
+  font-size: var(--toc-size);
+  color: var(--fc-blue);
+}
+
+#toc .toc-title,
+#toc h2 {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 0 10px 0 !important;
+  font-size: 1.2em !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--fc-blue) !important;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+#toc ul ul {
+  display: none;
+  margin-inline-start: calc(var(--space-md) + 0.25rem);
+  padding-inline-start: var(--space-sm);
+  border-inline-start: 2px solid var(--border-light);
+}
+
+#toc a {
+  display: block;
+  color: var(--fc-blue);
+  padding: 0.1875rem 0.25rem; /* 3px 4px */
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+  text-wrap: balance;
+  transition: background-color var(--transition-fast);
+}
+
+#toc a:hover {
+  background-color: rgba(15, 64, 107, 0.08);
+}
+
+#toc a.active {
+  background-color: var(--bg-toc-active);
+  color: var(--fc-blue) !important;
+  font-weight: 700;
+}
+
+#toc li.active-parent > ul {
+  display: block;
+}
+
+
+/* ============================================================
+   7. Tables
+   ============================================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  font-family: var(--font-body);
+}
+
+th {
+  background-color: var(--fc-blue);
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg-lighter);
+}
+
+
+/* ============================================================
+   8. Code
+   ============================================================ */
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: var(--fc-blue);
+  background-color: var(--bg-light);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: var(--fc-gray);
+  background-color: var(--bg-light);
+  border-left: 4px solid var(--fc-blue);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+
+/* ============================================================
+   9. Lists, Quotes, HR
+   ============================================================ */
+
+ul, ol {
+  margin-inline-start: calc(var(--space-lg) - 0.125rem);
+}
+
+blockquote {
+  font-style: italic;
+  color: var(--fc-gray);
+  background-color: #f9f9f9;
+  border-inline-start: 5px solid var(--fc-blue);
+  padding-inline-start: 0.9375rem; /* 15px */
+}
+
+hr {
+  border: none;
+  border-top: 2px solid var(--fc-blue);
+  margin: 2em 0;
+}
+
+
+/* ============================================================
+   10. Figures
+   ============================================================ */
+
+.figure-cap {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05em;
+  color: var(--fc-blue);
+  text-align: left;
+  margin-bottom: 0.1em;
+}
+
+/* Hide Quarto's auto-generated captions — we use .figure-cap instead */
+.quarto-float-caption,
+.quarto-float-caption-bottom,
+.quarto-float-caption.quarto-float-fig {
+  display: none !important;
+}
+
+/* Lock figure width to match #main-body, incl. Plotly widgets */
+.quarto-figure,
+.figure {
+  display: block;
+  width: var(--content-width);
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: hidden;
+}
+
+.html-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+
+/* ============================================================
+   11. Utilities
+   ============================================================ */
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+.centered {
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+/* Basic keyboard-focus visibility (accessibility) */
+a:focus-visible,
+.navbtn:focus-visible,
+.link-box:focus-visible,
+.link-box2:focus-visible {
+  outline: 3px solid var(--fc-sky);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   12. Footer
+   ============================================================ */
+
+.fc-footer {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  margin-block: 4rem 2rem;
+  padding-block-start: var(--space-md);
+  text-align: center;
+  color: var(--fc-gray);
+  font-size: 0.9rem;
+}
+
+.fc-footer p {
+  margin-block: var(--space-sm);
+}
+
+
+/* ============================================================
+   13. Responsive
+   ============================================================ */
+
+@media (max-width: 1250px) {
+
+  body {
+    margin: 15px !important;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  h1 { font-size: 1.9em !important; }
+  h2 { font-size: 1.5em !important; }
+  h3 { font-size: 1.3em !important; }
+  h4 { font-size: 1.15em !important; }
+
+  /* Hide sidebar, logo, and TOC on mobile */
+  #sidebar-column,
+  .fc-sidebar-logo,
+  #fc-header-logo,
+  #toc {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #title-block,
+  #fc-header-logo,
+  #report-title {
+    width: 100% !important;
+    margin-inline: 0 !important;
+    text-align: center !important;
+  }
+
+  #report-title {
+    font-size: 2em !important;
+    margin-top: 0.8em;
+  }
+
+  #layout-container {
+    flex-direction: column !important;
+    gap: 20px !important;
+    max-width: 100% !important;
+  }
+
+  #toc {
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+    border-inline-start: none !important;
+    border-bottom: 3px solid var(--fc-blue) !important;
+  }
+
+  /* Expand nested TOC sections so users don't have to tap tiny arrows */
+  #toc ul ul {
+    display: block !important;
+    padding-inline-start: 12px;
+    border-inline-start: 1px solid var(--border-light);
+  }
+
+  #main-body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbtn,
+  .link-box,
+  .link-box2 {
+    display: block !important;
+    width: 100% !important;
+    text-align: center;
+    padding: 10px 14px !important;
+    margin: 6px 0 !important;
+    font-size: 0.95em !important;
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-x: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  #sidebar-column,
+  .fc-sidebar-logo,
+  #fc-header-logo,
+  #toc {
+    display: none !important;
+  }
+
+  body {
+    margin: 10px !important;
+    font-size: 14px !important;
+  }
+
+  #report-title { font-size: 1.7em !important; }
+
+  h1 { font-size: 1.6em !important; }
+  h2 { font-size: 1.3em !important; }
+  h3 { font-size: 1.15em !important; }
+
+  .navbtn,
+  .link-box,
+  .link-box2 {
+    font-size: 0.9em !important;
+    padding: 8px 12px !important;
+  }
+}
+
+/* End of Fullerton College Report Stylesheet */

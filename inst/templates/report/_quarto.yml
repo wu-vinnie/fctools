@@ -1,0 +1,11 @@
+project:
+  type: default
+
+execute:
+  echo: false
+  warning: false
+  message: false
+
+metadata-files:
+  - html/_quarto.yml
+  - pdf/_quarto.yml

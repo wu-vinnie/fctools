@@ -1,0 +1,95 @@
+---
+title: "Report Title"
+subtitle: "Subtitle or Term (e.g. Fall 2026)"
+author: "Vinnie Wu"
+date: today
+date-format: "MMMM D, YYYY"
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+source("setup.R")
+
+```
+
+## Overview {.section-slide}
+
+<!--
+  Section divider slide. Apply the `.section-slide` class to the
+  slide's heading (as above) for any slide meant to introduce a new
+  part of the deck.
+-->
+
+## Agenda
+
+- First topic
+- Second topic
+- Third topic
+- Questions & discussion
+
+## A Heading Slide
+
+Body text goes here. `.reveal p` line-height and `.reveal strong`
+color are already styled — just write normally.
+
+**Key point** worth emphasizing appears in FC blue automatically.
+
+### A Sub-point
+
+Use `###` for a smaller, italicized sub-heading within a slide,
+styled in `--fc-sky`.
+
+## Callout Boxes
+
+::: {.blue-box}
+Use `.blue-box` for a primary emphasis callout — solid FC blue
+background, white text.
+:::
+
+::: {.yellow-box}
+Use `.yellow-box` for a highlight or warning-style callout.
+:::
+
+::: {.gray-box}
+Use `.gray-box` for a lower-emphasis supporting note — light
+background, blue left border.
+:::
+
+## A Table
+
+| Metric          | Fall 2025 | Fall 2026 |
+|------------------|-----------|-----------|
+| Enrollment       | 1,204     | 1,331     |
+| Retention Rate   | 78%       | 81%       |
+| Success Rate     | 71%       | 74%       |
+
+## A Plotly Chart
+
+```{r}
+#| label: fig-example
+#| echo: false
+
+plot_ly(
+  mpg,
+  x = ~displ,
+  y = ~hwy,
+  type = "scatter",
+  mode = "markers"
+) |>
+  fc_plotly_theme()
+```
+
+## A Quote
+
+> Use blockquotes for pulled quotes, testimonials, or emphasis text
+> that should stand apart from the body copy.
+
+## Wrap-up {.section-slide}
+
+## Questions?
+
+Contact: Vinnie Wu at [vwu@fullcoll.edu](mailto:vwu@fullcoll.edu)

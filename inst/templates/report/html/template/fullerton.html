@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html $if(lang)$lang="$lang$"$endif$>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  $for(header-includes)$
+    $header-includes$
+  $endfor$
+
+  $if(highlighting-css)$
+  <style type="text/css">
+  $highlighting-css$
+  </style>
+  $endif$
+
+  $if(math)$
+  $math$
+  $endif$
+
+  $if(css)$
+    $for(css)$
+    <link rel="stylesheet" href="$css$">
+    $endfor$
+  $endif$
+
+  $if(favicon)$
+  <link rel="icon" href="$favicon$">
+  $endif$
+
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+
+</head>
+
+<body>
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+<div id="layout-container">
+
+  <!-- ===================================================== -->
+  <!-- Sidebar -->
+  <!-- ===================================================== -->
+
+  <aside id="sidebar-column" aria-label="Sidebar">
+
+    <div class="fc-sidebar-logo">
+      <img
+        src="template/fc-oie.png"
+        alt="Fullerton College Office of Institutional Effectiveness"
+        loading="eager"
+        decoding="async">
+    </div>
+
+    $if(toc)$
+    <nav id="toc" aria-label="Table of contents">
+
+      $if(toc-title)$
+      <h2 class="toc-title">$toc-title$</h2>
+      $endif$
+
+      $toc$
+
+    </nav>
+    $endif$
+
+  </aside>
+
+
+  <!-- ===================================================== -->
+  <!-- Main Content -->
+  <!-- ===================================================== -->
+
+  <main id="main-body" role="main">
+
+    $if(title)$
+
+    <header id="title-block">
+
+      <h1 id="report-title">$title$</h1>
+
+      $if(subtitle)$
+      <h2 id="subtitle">$subtitle$</h2>
+      $endif$
+
+    </header>
+
+    $endif$
+
+    <!-- Quarto-rendered document -->
+    $body$
+
+
+    <!-- ===================================================== -->
+    <!-- Footer -->
+    <!-- ===================================================== -->
+
+    <footer class="fc-footer">
+
+      <hr>
+
+      <p>
+        <strong>Office of Institutional Effectiveness</strong><br>
+        Fullerton College
+        $if(author)$
+        <br>
+        Prepared by $author$
+        $endif$
+      </p>
+
+      <p>
+        Last updated<br>
+        <strong>$date$</strong>
+      </p>
+
+    </footer>
+
+  </main>
+
+</div>
+
+<script src="template/fullerton.js"></script>
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+</body>
+
+</html>

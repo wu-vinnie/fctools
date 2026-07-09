@@ -1,0 +1,15 @@
+project:
+  output-dir: ../html
+
+format:
+  html:
+    css: html/template/fullerton.css
+    template: html/template/fullerton.html
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: "Table of Contents"
+    number-sections: false
+    embed-resources: true
+    theme: none
+    title-block: none

@@ -1,0 +1,19 @@
+project:
+  type: default
+  output-dir: ../html
+
+execute:
+  echo: false
+  warning: false
+  message: false
+
+format:
+  revealjs:
+    css: template/fullerton.css
+    logo: template/fc.png
+    footer: "Fullerton College — Office of Institutional Effectiveness"
+    slide-number: true
+    chalkboard: false
+    theme: none
+    embed-resources: true
+    toc: false
