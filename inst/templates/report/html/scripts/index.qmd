@@ -11,12 +11,6 @@ date-format: "MMMM D, YYYY"
 #| label: setup
 #| include: false
 
-library(tidyverse)
-library(plotly)
-library(fcbrand)
-
-use_fc_theme()
-
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("setup.R")
@@ -29,11 +23,7 @@ source("setup.R")
 
 ## Overview {.section-slide}
 
-<!--
-  Section divider slide. Apply the `.section-slide` class to the
-  slide's heading (as above) for any slide meant to introduce a new
-  part of the deck.
--->
+Blah blah blah
 
 ## Agenda
 

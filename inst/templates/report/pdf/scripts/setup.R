@@ -8,9 +8,13 @@
 # (package loads, theme/font registration, options) goes here.
 # ============================================================
 
+library(fctools)
 library(tidyverse)
 library(plotly)
 library(fctools)
+library(extrafont)
+
+loadfonts(device = "pdf")
 
 use_fc_theme()
 

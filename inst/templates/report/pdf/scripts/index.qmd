@@ -11,12 +11,6 @@ date-format: "MMMM D, YYYY"
 #| label: setup
 #| include: false
 
-library(tidyverse)
-library(plotly)
-library(fcbrand)
-
-use_fc_theme()
-
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 source("setup.R")

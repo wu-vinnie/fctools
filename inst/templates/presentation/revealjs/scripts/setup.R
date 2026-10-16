@@ -11,6 +11,9 @@
 library(tidyverse)
 library(plotly)
 library(fctools)
+library(extrafont)
+
+loadfonts(device = "win")
 
 use_fc_theme()
 
