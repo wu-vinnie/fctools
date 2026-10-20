@@ -1,15 +1,20 @@
 project:
   output-dir: output
 
+# Typst ships with Quarto, so no LaTeX install is needed.
+# Brand colors/fonts come from _brand.yml; layout, headings,
+# tables, boxes, and footer come from template/typst-template.typ.
 format:
-  pdf:
-    documentclass: report
-    pdf-engine: xelatex
-    include-in-header: template/preamble.tex
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
     toc: false
-    number-sections: false
-    geometry:
-      - margin=1in
-    colorlinks: true
-    linkcolor: fcblue
-    
+    fig-format: png
+    fig-dpi: 300
+    template-partials:
+      - template/typst-template.typ
+
+filters:
+  - template/fc-boxes.lua

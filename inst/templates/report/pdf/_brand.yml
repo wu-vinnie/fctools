@@ -1,0 +1,35 @@
+meta:
+  name: Fullerton College
+  link: https://www.fullcoll.edu
+
+color:
+  palette:
+    blue: "#0F406B"
+    yellow: "#FFD600"
+    sky: "#375E9E"
+    creek: "#5DCCD4"
+    breeze: "#BAEEED"
+    lemon: "#F5F3BF"
+    rust: "#E6605B"
+    elderberry: "#1B0D42"
+    gray: "#333333"
+    white: "#FFFFFF"
+  foreground: gray
+  background: white
+  primary: blue
+  secondary: sky
+  link: blue
+
+typography:
+  fonts:
+    - family: Century Gothic
+      source: system
+  base:
+    family: Century Gothic
+    size: 11pt
+  headings:
+    family: Century Gothic
+    weight: bold
+    color: blue
+  link:
+    color: blue

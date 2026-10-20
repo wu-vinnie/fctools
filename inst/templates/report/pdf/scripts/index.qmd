@@ -17,38 +17,29 @@ source("setup.R")
 
 ```
 
-::: {style="text-align:center;"}
-<img src="../template/Library.jpg" style="width:80%; height:auto;"/>
-:::
 
-## Overview {.section-slide}
+# Overview
 
-<!--
-  Section divider slide. Apply the `.section-slide` class to the
-  slide's heading (as above) for any slide meant to introduce a new
-  part of the deck.
--->
+Body text goes here. Paragraphs, lists, and links are styled
+automatically — just write normally.
 
-## Agenda
+**Key point** worth emphasizing appears in FC blue automatically.
+
+## A Section
+
+Use `#` for top-level sections (blue rule underneath) and `##`
+for sections within them (blue left bar).
 
 - First topic
 - Second topic
 - Third topic
-- Questions & discussion
-
-## A Heading Slide
-
-Body text goes here. `.reveal p` line-height and `.reveal strong`
-color are already styled — just write normally.
-
-**Key point** worth emphasizing appears in FC blue automatically.
 
 ### A Sub-point
 
-Use `###` for a smaller, italicized sub-heading within a slide,
-styled in `--fc-sky`.
+Use `###` for a smaller, italicized sub-heading, styled in FC sky
+blue.
 
-## Callout Boxes
+# Callout Boxes
 
 ::: {.blue-box}
 Use `.blue-box` for a primary emphasis callout — solid FC blue
@@ -64,37 +55,40 @@ Use `.gray-box` for a lower-emphasis supporting note — light
 background, blue left border.
 :::
 
-## A Table
+# A Table
 
-| Metric          | Fall 2025 | Fall 2026 |
+| Metric           | Fall 2025 | Fall 2026 |
 |------------------|-----------|-----------|
 | Enrollment       | 1,204     | 1,331     |
 | Retention Rate   | 78%       | 81%       |
 | Success Rate     | 71%       | 74%       |
 
-## A Plotly Chart
+# A Chart
+
+PDFs need static charts — use ggplot2 with `theme_fc()` (set as
+the default by `use_fc_theme()` in setup.R) rather than plotly.
 
 ```{r}
 #| label: fig-example
-#| echo: false
+#| fig-cap: "Highway mileage by engine displacement."
+#| fig-width: 6.5
+#| fig-height: 3.5
 
-plot_ly(
-  mpg,
-  x = ~displ,
-  y = ~hwy,
-  type = "scatter",
-  mode = "markers"
-) |>
-  fc_plotly_theme()
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
+  geom_point(size = 2, alpha = 0.8) +
+  scale_color_fc() +
+  labs(
+    x = "Engine displacement (L)",
+    y = "Highway MPG",
+    color = "Drive"
+  )
 ```
 
-## A Quote
+# A Quote
 
 > Use blockquotes for pulled quotes, testimonials, or emphasis text
 > that should stand apart from the body copy.
 
-## Wrap-up {.section-slide}
-
-## Questions?
+# Questions?
 
 Contact: [oie@fullcoll.edu](mailto:oie@fullcoll.edu)

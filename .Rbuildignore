@@ -4,3 +4,4 @@
 ^dev\.R$
 ^.*\.Rproj$
 ^inst/.*/\.quarto$
+^inst/templates/.*/output/(?!\.gitkeep$)

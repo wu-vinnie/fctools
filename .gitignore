@@ -40,3 +40,7 @@ dev.R
 inst/templates/**/.quarto/
 /.quarto/
 **/*.quarto_ipynb
+
+# Rendered template previews (keep the empty output/ folders)
+inst/templates/**/output/*
+!inst/templates/**/output/.gitkeep

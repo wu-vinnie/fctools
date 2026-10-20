@@ -1,6 +1,6 @@
 # ============================================================
 # Fullerton College (FC) Report — Setup
-# Template: report (shared across html + pdf formats)
+# Template: report/pdf (Typst)
 # Package:  fctools
 #
 # Loaded via source("setup.R") from index.qmd's setup chunk.
@@ -10,19 +10,13 @@
 
 library(fctools)
 library(tidyverse)
-library(plotly)
-library(fctools)
-library(extrafont)
 
-loadfonts(device = "pdf")
-
-use_fc_theme()
-
-# PDF rendering needs fonts embedded in the graphics device.
-# HTML rendering gets Century Gothic from fullerton.css instead, so
-# this only actually matters when this report is rendered to PDF —
-# but it's harmless to run unconditionally for either format.
+# Register Century Gothic with the graphics device so ggplot2
+# charts (rendered as PNGs) use FC's brand font.
 use_fc_fonts()
+
+# Make theme_fc() the default ggplot2 theme for this report.
+use_fc_theme()
 
 # Uncomment if this report uses flextable for publication-quality
 # tables (e.g. faculty reports, MIS/state reporting summaries).
